@@ -1,0 +1,143 @@
+Activity.XML File ____________:::
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+    <EditText
+        android:paddingLeft="15dp"
+        android:inputType="numberDecimal"
+        android:hint="Enter Temperature"
+        android:id="@+id/temperatureEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:paddingTop="90dp"
+        android:gravity="center"
+        android:paddingRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <RadioButton
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:id="@+id/ToFarenheitButtonId"
+            android:text="Celsius To Farenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/ToCelsiusButtonId"
+            android:textStyle="bold"
+            android:text="Farenheit To Celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="convert"
+            android:id="@+id/conversionButtonId"
+            android:text="Convert"
+            android:textColor="#861cef"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+    </RadioGroup>
+
+
+
+
+
+</RelativeLayout>
+
+
+
+
+
+### TemperatureConvert.java class:_______
+
+
+public class TemperatureConvert {
+
+  public static double celsius2Farenheit(double f)
+  {
+
+
+      return 32+f*9/5;
+
+  }
+
+  public static double farenheit2Celsius(double c)
+  {
+
+
+      return (c-32)*5/9;
+
+  }
+
+}
+
+
+
+### MainActivity.Java :::_________________
+
+
+
+public class MainActivity extends AppCompatActivity {
+
+
+    EditText temp;
+    RadioButton toC,toF;
+    Button convertion;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        temp = (EditText)findViewById(R.id.temperatureEditText);
+        toC =  (RadioButton)findViewById(R.id.ToCelsiusButtonId);
+        toF =  (RadioButton)findViewById(R.id.ToFarenheitButtonId);
+        convertion = (Button)findViewById(R.id.conversionButtonId);
+
+    }
+
+
+    public void convert(View view)
+    {
+      double value = new Double(temp.getText().toString());
+
+      if (toF.isChecked())
+      {
+          value = TemperatureConvert.celsius2Farenheit(value);
+          temp.setText(new Double(value).toString());
+      }
+      if (toC.isChecked())
+      {
+          value = TemperatureConvert.farenheit2Celsius(value);
+          temp.setText(new Double(value).toString());
+      }
+    }
+}
+
+

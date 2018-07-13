@@ -1,0 +1,332 @@
+### Activity XML ::::______________
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4d183d"
+    android:gravity="center"
+    android:padding="5dp"
+
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/bangladeshButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bangladesh_button"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        style="@style/Widget.AppCompat.Button.Colored"
+
+        />
+
+    <Button
+
+        android:layout_gravity="center"
+        android:id="@+id/indiaButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/india_button"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        style="@style/Widget.AppCompat.Button.Colored"
+
+        />
+
+
+    <Button
+
+        android:id="@+id/pakistanButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pakistan_button"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        style="@style/Widget.AppCompat.Button.Colored"
+
+        />
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+###ActivityProfile XML :::::::::____________
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    tools:context=".ProfileActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <ImageButton
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/imageViewId"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+
+        <TextView
+
+            android:id="@+id/textViewId"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+
+
+
+###### String.XML ::::::::::___
+
+
+
+
+
+<resources>
+    <string name="app_name">SimpleIntentProject</string>
+
+    <string name="bangladesh_button">Bangladesh</string>
+    <string name="india_button">India</string>
+    <string name="pakistan_button">Pakistan</string>
+
+    <string name="bangladesh_details">
+
+        ABOUT BANGLADESH:\n\n
+
+ Capital          :  Dhaka.\n
+ Population       :  16 -Crore.\n
+ Status           :  Developing Country.\n
+ Prime Minister   :  Sheik Hasina.\n
+ Father of Nation :  Bangabandhu Sheikh Mujibor Rahman.\n
+ Currency         :  Taka.\n
+ Language         :  Bengali.\n
+
+    </string>
+
+
+    <string name="india_details">
+
+
+  ABOUT INDIA:\n\n
+
+ Capital          : Delhi.\n
+ Population       : 120-Crore.\n
+ Status           : Developing Country.\n
+ Prime Minister   : Narendra Modi.\n
+ Father of Nation : Mahatta Gandhi.\n
+ Currency         : India Rupee.\n
+ Language         : Hindi\n
+
+
+
+
+    </string>
+
+
+
+    <string name="pakistan_details">
+
+
+
+
+  ABOUT PAKISTAN:\n\n
+
+ Capital          :  Karachi.\n
+ Population       :  15_Crore.\n
+ Status           :  Developing Country.\n
+ Prime Minister   :  Muhammad Ali Jinnah.\n
+ Father of Nation :  Shahid Khaqan Abbasi.\n
+ Currency         :  Pakistani Rupee.\n
+ Language         :  Urdu\n
+
+
+
+
+
+    </string>
+
+
+
+</resources>
+
+
+
+###### MainActivity.Java ::::::___________
+
+
+
+
+
+package com.example.anabi.simpleintentproject;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+private Button bangladeshButton,indiaButton,pakistanButton;
+private Intent intent;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        bangladeshButton = (Button)findViewById(R.id.bangladeshButtonId);
+        indiaButton = (Button)findViewById(R.id.indiaButtonId);
+        pakistanButton = (Button)findViewById(R.id.pakistanButtonId);
+
+        bangladeshButton.setOnClickListener(this);
+        indiaButton.setOnClickListener(this);
+        pakistanButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+        if(v.getId()==R.id.bangladeshButtonId)
+        {
+            intent = new Intent(MainActivity.this,ProfileActivity.class);
+            intent.putExtra("name","bangladesh");
+            startActivity(intent);
+        }
+
+
+
+        if(v.getId()==R.id.indiaButtonId)
+        {
+            intent = new Intent(MainActivity.this,ProfileActivity.class);
+            intent.putExtra("name","india");
+            startActivity(intent);
+        }
+
+
+
+        if(v.getId()==R.id.pakistanButtonId)
+        {
+            intent = new Intent(MainActivity.this,ProfileActivity.class);
+            intent.putExtra("name","pakistan");
+            startActivity(intent);
+        }
+
+
+    }
+}
+
+
+
+#### ProfileActivity.java::::::::___________
+
+
+
+
+
+
+package com.example.anabi.simpleintentproject;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ProfileActivity extends AppCompatActivity {
+private ImageView imageView;
+private TextView textView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+
+
+        imageView = (ImageView)findViewById(R.id.imageViewId);
+        textView = (TextView)findViewById(R.id.textViewId);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle!=null)
+        {
+
+             String countryName = bundle.getString("name");
+             showDetails(countryName);
+
+        }
+
+    }
+
+        void showDetails(String countryName)
+    {
+
+        if (countryName.equals("bangladesh")) {
+          imageView.setImageResource(R.drawable.bangladesh_main_icon);
+          textView.setText(R.string.bangladesh_details);
+     }
+
+
+
+          if (countryName.equals("india")){
+               imageView.setImageResource(R.drawable.india_main_icon);
+               textView.setText(R.string.india_details);}
+
+
+
+        if (countryName.equals("pakistan")) {
+            imageView.setImageResource(R.drawable.pakistan_main_icon);
+            textView.setText(R.string.pakistan_details);
+        }
+
+    }
+}
+
+
+
+
+
+
+###  >>>> important : You need Some Image that need to be in drawable file to successfully run the code!!! be carefull of that!!!!################### like bangladesh image , india image , pakistan Image 

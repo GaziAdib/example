@@ -1,0 +1,68 @@
+1. Create new Activity in java file named About.java
+2. go to layout file about.xml:
+
+write these: 
+
+<ImageView
+      
+        android:paddingTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/aboutmeImageViewId"
+        android:src="@drawable/any"/>
+
+    <TextView
+       
+   
+    
+        android:text="About : 
+          Name      : your name here
+
+          ID           : your id here:
+
+          Sec         : B
+
+          Email    : your email
+
+        \n  From     : DIU.
+
+       
+3. go to main activity xml: create a button :
+
+
+<Button
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/ButtonId"
+        android:text="About"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+4. go to Main activity .java
+
+ private Button about;
+    private Intent intent;
+
+
+
+aboutme = findViewById(R.id.aboutmeButtonId);
+
+
+aboutme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (v.getId()==R.id.ButtonId)
+                {
+
+                    Intent intent = new Intent(MainActivity.this,About.class);
+                    startActivity(intent);
+
+
+                }
+
+
+            }
+        });

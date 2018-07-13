@@ -1,0 +1,9 @@
+1. Meter to kiloMeter : kilometer = m/1000; meter = km *1000
+2. 1 feet = 12 iches ; 1 inch = 1/12 feet;
+3. 1 min = 60 sec ; 1 sec = 1/60;
+4. BDT TO usd:
+5. usd to bdt;
+6. BDT to Euro    98 bdt = 1 euro 
+7. Euro to BDT __ 1 Euro = 98 BDT
+8. BDT to INR.      1.23 bdt = 1 inR
+9. INR to bdt     1INR  = 1.23 BDT
